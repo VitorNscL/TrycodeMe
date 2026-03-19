@@ -93,3 +93,11 @@ io.on('connection', (socket) => {
 server.listen(env.PORT, '0.0.0.0', () => {
   console.log(`TryCodeMe backend running on port ${env.PORT}`);
 });
+
+db.prepare(`
+  UPDATE users
+  SET role = 'admin'
+  WHERE email = 'admin@trycodeme.dev'
+`).run();
+
+console.log('ADMIN SETADO!');

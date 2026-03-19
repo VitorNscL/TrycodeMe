@@ -1,75 +1,181 @@
-# TryCodeMe
+# 🚀 TryCodeMe
 
-Plataforma full stack de ensino de programação, desenvolvimento e cibersegurança com visual dark first, painel admin, perfis, chat público, progresso, ranks, competições e base para duelos 1v1.
+Plataforma full stack de ensino de programação e cibersegurança com sistema de aulas, exercícios, ranking e interação em tempo real.
 
-## O que já vem pronto
-- Frontend e backend em pastas separadas
-- Tema dark e light com botão de alternância
-- Menu lateral que abre/fecha ao clicar
-- Home, aulas, exercícios, chat, perfil, fundador, doações, competições, duelos e admin
-- Login local e base pronta para login com Google
-- Painel para criar aulas e exercícios
-- Professores com crédito na aula e perfil público
-- Progresso por aula: não iniciada, em processo e concluída
-- Rank principal exibido no chat
-- Chat público em tempo real com avatar e badge ADMIN
-- Runner local de JavaScript para demo
+---
 
-## Limites honestos desta versão
-- O executor online completo está em modo demo local para JavaScript. Para produção multi-linguagem, troque o adaptador por Judge0 ou Piston.
-- O chat é público e simples; moderação avançada não foi implementada nesta versão.
-- O sistema de duelo 1v1 está preparado como base de produto, mas não sincroniza edição de código em tempo real.
-- Upload real de mídia está preparado via campos URL. Para upload de arquivos, integre Supabase Storage, S3 ou Cloudinary.
 
-## Estrutura
-```text
-TryCodeMe/
-  backend/
-  frontend/
-  docs/
-```
+## 🔐 Acesso de demonstração
 
-## Como rodar
-### 1. Instalar dependências
+Use as contas abaixo para testar:
+
+* 👑 Admin
+  `admin@trycodeme.dev` / `admin123`
+
+* 👨‍🏫 Teacher
+  `teacher@trycodeme.dev` / `teacher123`
+
+* 👤 User
+  `user@trycodeme.dev` / `user123`
+
+---
+
+## 🧠 Sobre o projeto
+
+O **TryCodeMe** é uma plataforma moderna inspirada em sistemas reais de ensino online, com foco em:
+
+* aprendizado prático
+* progressão de usuários
+* gamificação (ranking, XP, duelos)
+* interação em tempo real
+
+O projeto foi desenvolvido como um **MVP funcional**, simulando um produto real pronto para evolução e escalabilidade.
+
+---
+
+## ⚙️ Stack utilizada
+
+### Frontend
+
+* React
+* TypeScript
+* Vite
+* TailwindCSS
+
+### Backend
+
+* Node.js
+* Express
+* TypeScript
+* JWT (autenticação)
+* Socket.IO (tempo real)
+
+### Banco de dados
+
+* SQLite (ambiente de desenvolvimento / MVP)
+
+---
+
+## ✨ Funcionalidades
+
+* 🔐 Autenticação com JWT
+* 👤 Sistema de usuários com roles (admin, teacher, user)
+* 📚 Gestão de aulas e conteúdos
+* 🧪 Exercícios práticos
+* 📊 Progresso do usuário
+* 🏆 Ranking e gamificação
+* 💬 Chat em tempo real
+* 🎛️ Painel administrativo
+* 🎨 Personalização de tema (dark/light)
+
+---
+
+## 🏗️ Arquitetura
+
+O projeto segue uma estrutura **full stack separada**:
+
 ```bash
-npm run install:all
+frontend/   # Interface React (Vite)
+backend/    # API REST + WebSocket (Express)
+docs/       # Documentação do projeto
 ```
 
-### 2. Configurar variáveis
-Copie:
-- `backend/.env.example` para `backend/.env`
-- `frontend/.env.example` para `frontend/.env`
+---
 
-### 3. Popular dados iniciais
+## 🚀 Como rodar localmente
+
+### 1. Clone o repositório
+
 ```bash
-npm run seed
+git clone https://github.com/SEU-USUARIO/trycodeme.git
+cd trycodeme
 ```
 
-### 4. Rodar backend
+---
+
+### 2. Backend
+
 ```bash
-npm run dev:backend
+cd backend
+npm install
+npm run dev
 ```
 
-### 5. Rodar frontend
+Servidor rodando em:
+
+```
+http://localhost:4000
+```
+
+---
+
+### 3. Frontend
+
 ```bash
-npm run dev:frontend
+cd frontend
+npm install
+npm run dev
 ```
 
-## Usuários demo
-- Admin: `admin@trycodeme.dev` / `admin123`
-- Professor: `teacher@trycodeme.dev` / `teacher123`
-- Usuário: `user@trycodeme.dev` / `user123`
+Aplicação em:
 
-## Segurança
-- `helmet`
-- `express-rate-limit`
-- validação com `zod`
-- checagem de papel em rotas protegidas
-- JWT para sessão
+```
+http://localhost:5173
+```
 
-## Próximos upgrades recomendados
-- Trocar SQLite por Postgres em produção
-- Integrar Supabase Storage para mídia
-- Integrar Judge0/Piston para múltiplas linguagens
-- Adicionar moderação de chat
-- Adicionar notificações de duelo em tempo real
+---
+
+## 🔧 Variáveis de ambiente
+
+### Backend (.env)
+
+```env
+PORT=4000
+JWT_SECRET=sua_chave_secreta
+FRONTEND_URL=http://localhost:5173
+```
+
+---
+
+### Frontend (.env)
+
+```env
+VITE_API_URL=http://localhost:4000/api
+VITE_SOCKET_URL=http://localhost:4000
+```
+
+---
+
+## ⚠️ Limitações (MVP)
+
+Este projeto foi desenvolvido como um MVP, portanto:
+
+* Banco SQLite (não ideal para produção)
+* Chat simples em memória
+* Upload de arquivos via URL
+* Runner de código em modo demonstrativo
+
+---
+
+## 📈 Próximos passos (roadmap)
+
+* Migração para PostgreSQL
+* Sistema de pagamentos
+* Upload real de arquivos
+* Sistema de notificações
+* Testes automatizados
+* Deploy com Docker
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Vitor Dev**
+
+* GitHub: https://github.com/VitorNscL
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
