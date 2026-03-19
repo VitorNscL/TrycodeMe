@@ -103,3 +103,5 @@ db.prepare(`
 `).run();
 
 console.log('ADMIN SETADO!');
+
+console.log("RAILWAY TESTE");
