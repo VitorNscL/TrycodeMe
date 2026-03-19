@@ -90,8 +90,10 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(env.PORT, '0.0.0.0', () => {
-  console.log(`TryCodeMe backend running on port ${env.PORT}`);
+const PORT = Number(env.PORT) || 4000;
+
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`TryCodeMe backend running on port ${PORT}`);
 });
 
 db.prepare(`
