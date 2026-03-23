@@ -21,7 +21,7 @@ if (userCount.count === 0) {
   const teacherPassword = bcrypt.hashSync('teacher123', 10);
   db.prepare(`INSERT INTO users (email, password_hash, display_name, nickname, role, bio, specialty, certifications, avatar_url, lessons_completed, exercises_completed, active_hours)
     VALUES
-    ('admin@trycodeme.dev', ?, 'Vitor Dev', 'VitorDev', 'admin', 'Fundador do TryCodeMe.', 'Full Stack, Cibersegurança', '["Arquitetura de Sistemas", "JavaScript Avançado"]', 'https://i.pravatar.cc/150?img=12', 18, 27, 120),
+    ('admin@trycodeme.dev', ?, 'Vitor Dev', 'VitorDev', 'admin', 'Fundador do TryCodeMe.', 'Full Stack, Cibersegurança', '["Arquitetura de Sistemas", "JavaScript Avançado"]', '/perfil_fundador.jpg', 18, 27, 120),
     ('teacher@trycodeme.dev', ?, 'Carlos Spring', 'CarlosSpring', 'teacher', 'Professor convidado focado em backend.', 'Java, Spring Boot, APIs REST', '["Spring Professional", "Java Specialist"]', 'https://i.pravatar.cc/150?img=15', 12, 19, 85),
     ('user@trycodeme.dev', ?, 'Ana Code', 'AnaCode', 'user', 'Usuária demo para testar o chat.', 'JavaScript, CSS', '["Frontend Basics"]', 'https://i.pravatar.cc/150?img=32', 4, 8, 26)`)
     .run(adminPassword, teacherPassword, bcrypt.hashSync('user123', 10));
