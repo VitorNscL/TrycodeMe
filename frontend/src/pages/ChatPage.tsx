@@ -20,6 +20,9 @@ export function ChatPage() {
     socket.on('chat:history', (payload) => setMessages(payload));
     socket.on('chat:message', (payload) => setMessages((current) => [...current, payload]));
     socket.on('chat:presence', (payload) => setOnline(payload));
+
+    socket.on('chat:cleared', () => setMessages([]));
+
     return () => {
       socket.off('chat:history');
       socket.off('chat:message');
@@ -77,6 +80,18 @@ export function ChatPage() {
               })}
               <div ref={bottomRef} />
             </div>
+            {user?.role === 'admin' && (
+              <button
+                onClick={() => {
+                  if (confirm('Tem certeza que deseja limpar o chat?')) {
+                    socket.emit('chat:clear');
+                  }
+                }}
+                className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded mb-2"
+              >
+                🧹 Limpar Chat
+              </button>
+            )}
             <div className="chat-input-row">
               <input className="search-input" value={text} onChange={(event) => setText(event.target.value)} placeholder="Escreva sua mensagem..." onKeyDown={(event) => event.key === 'Enter' && sendMessage()} />
               <button className="primary-button" onClick={sendMessage}>Enviar</button>

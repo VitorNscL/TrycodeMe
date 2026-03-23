@@ -51,6 +51,7 @@ const onlineUsers = new Map<string, { userId: number; nickname: string; avatarUr
 let messages: Array<{ id: string; text: string; userId: number; nickname: string; avatarUrl: string; role: string; rank: string; createdAt: string }> = [];
 
 io.on('connection', (socket) => {
+  
   socket.on('chat:join', ({ userId }) => {
     const user = db.prepare('SELECT id, nickname, display_name, avatar_url, role, active_hours, lessons_completed, exercises_completed FROM users WHERE id = ?').get(userId) as any;
     if (!user) return;
@@ -88,6 +89,16 @@ io.on('connection', (socket) => {
     onlineUsers.delete(socket.id);
     io.emit('chat:presence', Array.from(onlineUsers.values()));
   });
+
+  socket.on('chat:clear', () => {
+  const sender = onlineUsers.get(socket.id);
+
+  if (sender?.role !== 'admin') return;
+
+  messages = [];
+  io.emit('chat:cleared');
+  });
+  
 });
 
 const PORT = Number(env.PORT) || 4000;
@@ -105,3 +116,4 @@ db.prepare(`
 console.log('ADMIN SETADO!');
 
 console.log("RAILWAY TESTE");
+
