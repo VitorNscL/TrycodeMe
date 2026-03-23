@@ -81,19 +81,24 @@ export function ChatPage() {
               <div ref={bottomRef} />
             </div>
             {user?.role === 'admin' && (
-              <div className="flex justify-end mb-2">
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
                 <button
                   onClick={() => {
                     if (confirm('Tem certeza que deseja limpar o chat?')) {
                       socket.emit('chat:clear');
                     }
                   }}
-                  className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium 
-                 text-red-400 border border-red-400/30 rounded-lg 
-                 hover:bg-red-500/10 hover:text-red-300 
-                 transition-all duration-200"
+                  style={{
+                    background: 'rgba(139, 92, 246, 0.1)', // roxo suave
+                    color: '#a78bfa', // roxo claro
+                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    padding: '6px 12px',
+                    borderRadius: '10px',
+                    cursor: 'pointer',
+                    backdropFilter: 'blur(4px)'
+                  }}
                 >
-                  🧹 Limpar chat
+                  clear chat
                 </button>
               </div>
             )}
